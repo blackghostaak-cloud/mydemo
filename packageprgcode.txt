@@ -1,0 +1,92 @@
+package pack1;
+
+public class Define
+{
+    int a = 10;
+    private int b = 20;
+    public int c = 30;
+    protected int d = 40;
+
+    public void display()
+    {
+        System.out.println("Inside same class same pakage");
+        System.out.println("Default: " + a);
+        System.out.println("Private: " + b);
+        System.out.println("Public: " + c);
+        System.out.println("Protected: " + d);
+    }
+}
+
+package pack1;
+
+public class subclass1 extends Define
+{
+    public  subclass1 ()
+    {
+        System.out.println("Inside same package subclass");
+        System.out.println("Default: " + a);
+        System.out.println("Public: " + c);
+        System.out.println("Protected: " + d);
+    }
+}
+
+package pack1;
+
+public class Nonsubclass1 extends Define
+{
+    public Nonsubclass1()
+    {
+        System.out.println("Inside Same Package NonSubclass");
+        System.out.println("Default " + a);
+        System.out.println("Public " + c);
+        System.out.println("Protected " + d);
+    }
+}
+
+package pack2;
+
+import pack1.*;
+
+public class subclass2 extends Define
+{
+    public subclass2()
+    {
+        System.out.println("Different package subclass");
+        System.out.println("Protected: " + d);
+        System.out.println("Public: " + c);
+    }
+}
+
+package pack2;
+
+import pack1.*;
+
+public class nonsubclass2 extends Define
+{
+    public nonsubclass2()
+    {
+
+        System.out.println("Different package non-subclass");
+        System.out.println("Public: " + c);
+    }
+}
+
+import pack1.*;
+import pack2.*;
+
+public class main
+{
+    public static void main(String[] args)
+    {
+        Define d = new Define();
+        d.display();
+
+        subclass1 s1 = new subclass1();
+
+        Nonsubclass1 ns1 = new Nonsubclass1();
+
+        subclass2 s2 = new subclass2();
+
+        nonsubclass2 ns2 = new nonsubclass2();
+    }
+}

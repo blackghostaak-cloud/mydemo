@@ -1,0 +1,68 @@
+There can be n number of db
+where each db can have any number of tables,each table may have any number of rows and coloumns
+[coloum indicates propretyies ]
+[row indicates value set]
+each coloumn is termed as attribute 
+and each row is called as tuple
+any db connection requires to have a proper connection establish with the relevent drivers called 
+database drivesrs [db drivers are diffrent for diffrent for diffren servers Mysql ex mysql server can 
+be identified by the drivers url count.mysql.jdbc.Driver where in the whole 0f url D id capital
+inbuilt functions like get connection which requires the database driver url 
+
+db drivers
+
+driver is interface btwn application and database
+4 types of db drivers 
+type 1 is called as odbc object database connectivity c written
+type 2 is called as gdbc-odbc driver java data base connectivity c++
+type 3 is called native driver written in java 
+
+type 4 used by administrators thin driver written in java 
+
+connectivity 
+for conneting to the database through type 3 driver any application requires
+the following steps:
+	1 . Load the db driver this can be done in a java progrm by using a method
+	forName avalable in an inbuilt class called Class which is avalable in java.sql package
+	ex: class.forName(driver) 
+	2. once the driver is loaded every driver has a static Class  called driver manager
+	which intern has a method called getconnection() which accepts three diffrent
+	parameters 1. databaseURL
+		  2. username
+		  3. password 
+among the 3 the seond and third are optional.....
+so getconnection has 3 overloaded methods
+		1. getconnection(DBURL)
+		2. getconnection(DBUSERNAME)
+		3. getconnection(DBPASSWORD)
+Get connection returns an  object of connection class ex: 
+------Connection conn =Driver manager.getconnection(DBURL,USERNAME,PASSWORD);---
+	3. ONCE connected to the database we will have connection object , using which we 
+	will write any kind of "CRUD" this crud operation are written as sql- and are written 
+	as part of java program using a method called preparedstateemnt or a method called 
+	create statement present inside and interface called statement 
+	ex: statement stmt = conn.createstatement(sql)
+sql :- C   create databse or create table.
+         R   Select * from table;
+         U   Update table set ____ where ____;
+         D   Delete or Drop delete from table where _____;
+	
+
+	4. using a statement object apply exectution of object sql query 
+		1 if we require select queryy to be exiuted then statement object is used to call 
+		   execute query method on the select statemnet which returns a result set
+		    (collection of rows and cloumns) Result rs=stmt.exicutequery(select)
+		2. if we requiere to exicute insert query delete query drop query or update query 
+		    then statemnet obj clls a method called exicute update on any of the 4 queries 
+		    which returns an intiger that stores no of rows affected 
+	5. close the connection to the db this can be done using con.close()
+
+
+Q write the java program to show the connection establishment and closing of the connection to a database 
+of my sql instance bookdb which contains a table by name bookinfo (title:string, id:initiger, author:string
+price:float)
+
+requirment.....
+mysql
+databse 
+wamp ser
